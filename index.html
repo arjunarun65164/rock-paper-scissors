@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice(){
+            let num = Math.random();
+            if (num < .33){
+                return "rock";
+            }
+            else if (num < .66){
+                return "paper";
+            }
+            return "scissors";
+            //returns Rock, Paper or scissors randomly
+        }
+
+        function playRound(playerSelection, computerSelection){
+            playerSelection = playerSelection.toLowerCase();
+            computerSelection = computerSelection.toLowerCase();
+
+            if (playerSelection === "rock" && computerSelection == "scissors" || playerSelection === "paper" && computerSelection === "rock" || playerSelection === "scissors" && computerSelection === "paper"){
+                return `You win! ${playerSelection} beats ${computerSelection}`;
+            }
+            else{
+                return `You Lose! ${computerSelection} beats ${playerSelection}`;
+            }
+
+        }
+
+
+    </script>
+    
+</body>
+</html>
