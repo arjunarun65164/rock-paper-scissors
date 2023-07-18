@@ -3,72 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
+    <script src = "script.js" defer></script>
+    <link rel = "stylesheet" href = "styles.css">
+    <link rel = "icon" href = "./favicon.jpeg">
 </head>
+
 <body>
-    <script>
-        function getComputerChoice(){
-            let num = Math.random();
-            if (num < .33){
-                return "rock";
-            }
-            else if (num < .66){
-                return "paper";
-            }
-            return "scissors";
-            //returns Rock, Paper or scissors randomly
-        }
+    <h1>Pick your Weapon:</h1>
+    <div class = "buttons"> 
+        <div class = "rock">
+            <button id = "rock" ><img src = "rock.png"></button>
+        </div>
+        
+        <div class = "paper">
+            <button id = "paper" ><img src = "paper.png"></button>
+        </div>
+        
+        <div class = "scissors">
+            <button id = "scissors" ><img src = "scissors.png"></button>
+        </div>
+    </div>
 
-        function playRound(playerSelection, computerSelection){
-            playerSelection = playerSelection.toLowerCase();
-            computerSelection = computerSelection.toLowerCase();
+    <div class = "score">
+        <div class = "player">
+            <h2>Score Player:</h2>
+            <p class = "player-score">0</p>
+        </div>
 
-            if (playerSelection === "rock" && computerSelection == "scissors" || playerSelection === "paper" && computerSelection === "rock" || playerSelection === "scissors" && computerSelection === "paper"){
-                console.log(`You win! ${playerSelection} beats ${computerSelection}`);
-                return true;
-            }
-            else if (playerSelection === computerSelection){
-                console.log(`Draw`);
-            }
-            else{
-                console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
-                return false;
-            }
-
-        }
-
-        function game(){
-            let scorePlayer, scoreComputer = 0;
-            let playerSelection;
-            let computerSelection;
-
-            for (let i = 0; i < 5; i++){
-                playerSelection = prompt("Rock, paper or scissors?", "---");
-                computerSelection = getComputerChoice();
-                let round = playRound(playerSelection, computerSelection);
-
-                if (round){
-                    scorePlayer++;
-                }
-                else if (round === false){
-                    scoreComputer++;
-                }
-
-            }
-
-            if (scorePlayer>scoreComputer){
-                alert("You won!");
-            }
-            else if (scoreComputer>scorePlayer){
-                alert("You lost!");
-            }
-            else{
-                alert("Draw");
-            }
-        }
-
-
-    </script>
-    
+        <div class = "computer">
+            <h2>Score Computer:</h2>
+            <p class = "computer-score">0</p>
+        </div>
+    </div>
 </body>
 </html>
