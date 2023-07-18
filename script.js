@@ -15,14 +15,12 @@ function playRound(playerSelection, computerSelection) {
     computerSelection = computerSelection.toLowerCase();
 
     if (playerSelection === "rock" && computerSelection == "scissors" || playerSelection === "paper" && computerSelection === "rock" || playerSelection === "scissors" && computerSelection === "paper") {
-        console.log(`You win! ${playerSelection} beats ${computerSelection}`);
         return true;
     }
     else if (playerSelection === computerSelection) {
-        console.log(`Draw`);
+        return;
     }
     else {
-        console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
         return false;
     }
 
@@ -55,10 +53,29 @@ function playRound(playerSelection, computerSelection) {
 // }
 
 
+function changeImageBorder(playerSelection, computerSelection, decision){
+    let buttonPlayer = document.querySelector(`#${playerSelection}`);
+    let buttonComputer = document.querySelector(`#${computerSelection}`);
+
+    if (decision === undefined){
+        buttonPlayer.classList.toggle("draw");
+        setTimeout(() => {buttonPlayer.classList.toggle("draw")},1000)
+        return;
+    } //if its a draw toggle the draw thing for 500 ms
+
+    buttonPlayer.classList.toggle("playerSelect");
+    buttonComputer.classList.toggle("computerSelect");
+
+    setTimeout(() => {buttonPlayer.classList.toggle("playerSelect")}, 1000);
+    setTimeout(() => {buttonComputer.classList.toggle("computerSelect")}, 1000);
+    //toggle the buttons for 500ms so that the border shows
+    // the bordered for player and computer select buttons are toggled
+}
+
 function buttonClick(e) {
-    let playerSelection = this.className;
+
+    let playerSelection = this.id;
     let computerSelection = getComputerChoice();
-    console.log(this.className);
 
     let decision = playRound(playerSelection, computerSelection);
     let playerScore = document.querySelector(".player-score");
@@ -82,9 +99,7 @@ function buttonClick(e) {
     }
     //changes the score and display heading depending on who won
 
-    // setTimeout(()=>{
-    //     if (!(playerScore === 5 || computerScore === 5)) title.innerText = "Pick your Weapon:";
-    // }, 500); //makes the heading return to "pick your weapon" after two seconds
+    changeImageBorder(playerSelection, computerSelection, decision);
 
     if (playerScore.innerText === "5"){
         title.innerText = `Game End: You Won 5 - ${computerScore.innerText}`;
@@ -96,7 +111,6 @@ function buttonClick(e) {
     }
 
 }
-
 
 const buttons = document.querySelectorAll("button");
 buttons.forEach(button => { button.addEventListener('click', buttonClick) });
