@@ -26,32 +26,6 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
-// function game(playerSelection) {
-//     let scorePlayer, scoreComputer = 0;
-//     let playerSelection;
-
-//     let computerSelection = getComputerChoice();
-//     let round = playRound(playerSelection, computerSelection);
-
-//     if (round) {
-//         scorePlayer++;
-//     }
-//     else if (round === false) {
-//         scoreComputer++;
-//     }
-
-
-//     if (scorePlayer > scoreComputer) {
-//         alert("You won!");
-//     }
-//     else if (scoreComputer > scorePlayer) {
-//         alert("You lost!");
-//     }
-//     else {
-//         alert("Draw");
-//     }
-// }
-
 
 function changeImageBorder(playerSelection, computerSelection, decision){
     let buttonPlayer = document.querySelector(`#${playerSelection}`);
